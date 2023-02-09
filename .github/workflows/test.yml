@@ -1,4 +1,4 @@
-name: Build and Test install-provisioning-profile
+name: Test
 on:
   workflow_dispatch: {}
   pull_request:
