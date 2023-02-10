@@ -45,6 +45,7 @@ export class Action {
 
   async run(options: ActionOptions) {
     this.checkIfPlatformIsSupported()
+    this.validateOptions(options)
     if (!this.stateStore.isPost) {
       await this.runMain(options)
       this.stateStore.isPost = true
@@ -68,6 +69,12 @@ export class Action {
     await this.fileDownloader.download(pkgURL, pkgFile.filePath)
     await this.pkgInstaller.install(pkgFile.filePath)
     pkgFile.cleanup()
+  }
+  
+  private validateOptions(options: ActionOptions) {
+    if (options.versionNumber == null || options.versionNumber.length <= 0) {
+      throw new Error("The version number must be specified.")
+    }
   }
   
   private checkIfPlatformIsSupported() {
