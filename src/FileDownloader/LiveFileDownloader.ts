@@ -1,5 +1,5 @@
 import {FileDownloader} from "./FileDownloader"
-import {CommandRunner} from "../CommandRunner"
+import {CommandRunner} from "../CommandRunner/CommandRunner"
 
 export class LiveFileDownloader implements FileDownloader {
   commandRunner: CommandRunner

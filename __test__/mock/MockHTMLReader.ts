@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import {HTMLReader} from "../../src/HTMLReader"
+import {HTMLReader} from "../../src/HTMLReader/HTMLReader"
 
 export class MockHTMLReader implements HTMLReader {
   async read(): Promise<string> {

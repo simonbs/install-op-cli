@@ -1,4 +1,4 @@
-import {CommandRunner} from "../../src/CommandRunner"
+import {CommandRunner} from "../../src/CommandRunner/CommandRunner"
 
 export class MockCommandRunner implements CommandRunner {
   public cmd: string | null = null

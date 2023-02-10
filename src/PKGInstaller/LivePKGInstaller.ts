@@ -1,5 +1,5 @@
 import {PKGInstaller} from "./PKGInstaller"
-import {CommandRunner} from "../CommandRunner"
+import {CommandRunner} from "../CommandRunner/CommandRunner"
 
 export class LivePKGInstaller implements PKGInstaller {
   commandRunner: CommandRunner

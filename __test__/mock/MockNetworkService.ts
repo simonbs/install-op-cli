@@ -1,5 +1,5 @@
-import {NetworkService} from "../../src/NetworkService"
-import {Response} from "../../src/NetworkService"
+import {NetworkService} from "../../src/NetworkService/NetworkService"
+import {Response} from "../../src/NetworkService/NetworkService"
 
 export class MockNetworkService implements NetworkService {
   responseData: any

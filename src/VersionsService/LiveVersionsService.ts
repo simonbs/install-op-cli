@@ -1,6 +1,6 @@
 import {VersionsService} from "./VersionsService"
-import {HTMLReader} from "../HTMLReader"
-import {VersionsScraper} from "../VersionsScraper"
+import {HTMLReader} from "../HTMLReader/HTMLReader"
+import {VersionsScraper} from "../VersionsScraper/VersionsScraper"
 import {Version} from "../Version"
 
 export class LiveVersionsService implements VersionsService {

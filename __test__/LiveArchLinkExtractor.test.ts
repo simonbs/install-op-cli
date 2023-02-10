@@ -1,5 +1,5 @@
 import {getVersionsSnapshot} from "./mock/getVersionsSnapshot"
-import {LiveArchLinkExtractor} from "../src/ArchLinkExtractor"
+import {LiveArchLinkExtractor} from "../src/ArchLinkExtractor/LiveArchLinkExtractor"
 
 test("Extracts the expected link", async () => {
   const versions = getVersionsSnapshot()

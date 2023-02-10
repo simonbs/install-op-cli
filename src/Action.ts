@@ -1,11 +1,11 @@
-import {StateStore} from "./StateStore"
-import {PlatformProvider} from "./PlatformProvider"
-import {DownloadSpecificationFactory} from "./DownloadSpecification"
-import {VersionsService} from "./VersionsService"
-import {ArchLinkExtractor} from "./ArchLinkExtractor"
-import {TemporaryFileFactory} from "./TemporaryFile"
-import {FileDownloader} from "./FileDownloader"
-import {PKGInstaller} from "./PKGInstaller"
+import {StateStore} from "./StateStore/StateStore"
+import {PlatformProvider} from "./PlatformProvider/PlatformProvider"
+import {DownloadSpecificationFactory} from "./DownloadSpecification/DownloadSpecificationFactory"
+import {VersionsService} from "./VersionsService/VersionsService"
+import {ArchLinkExtractor} from "./ArchLinkExtractor/ArchLinkExtractor"
+import {TemporaryFileFactory} from "./TemporaryFile/TemporaryFileFactory"
+import {FileDownloader} from "./FileDownloader/FileDownloader"
+import {PKGInstaller} from "./PKGInstaller/PKGInstaller"
 
 export interface ActionOptions {
   versionNumber: string

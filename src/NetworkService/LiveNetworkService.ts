@@ -1,6 +1,6 @@
 import {NetworkService} from "./NetworkService"
 import {Response} from "./Response"
-import {CommandRunner} from "../CommandRunner"
+import {CommandRunner} from "../CommandRunner/CommandRunner"
 
 export class LiveNetworkService implements NetworkService {
   commandRunner: CommandRunner

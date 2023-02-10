@@ -1,5 +1,5 @@
-import {TemporaryFile} from "../../src/TemporaryFile"
-import {TemporaryFileFactory} from "../../src/TemporaryFile"
+import {TemporaryFile} from "../../src/TemporaryFile/TemporaryFile"
+import {TemporaryFileFactory} from "../../src/TemporaryFile/TemporaryFileFactory"
 import {MockTemporaryFile} from "./MockTemporaryFile"
 
 export class MockTemporaryFileFactory implements TemporaryFileFactory {

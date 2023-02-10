@@ -1,6 +1,6 @@
 import {MockHTMLReader} from "./mock/MockHTMLReader"
 import {getVersionsSnapshot} from "./mock/getVersionsSnapshot"
-import {LiveVersionsScraper} from "../src/VersionsScraper"
+import {LiveVersionsScraper} from "../src/VersionsScraper/LiveVersionsScraper"
 
 test("Scrapes versions from HTML", async () => {
   const htmlReader = new MockHTMLReader()

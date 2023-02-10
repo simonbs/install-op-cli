@@ -1,5 +1,5 @@
 import {HTMLReader} from "./HTMLReader"
-import {NetworkService} from "../NetworkService"
+import {NetworkService} from "../NetworkService/NetworkService"
 
 export class LiveHTMLReader implements HTMLReader {
   networkService: NetworkService
