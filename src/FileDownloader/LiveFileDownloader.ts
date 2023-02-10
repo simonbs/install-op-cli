@@ -1,19 +1,19 @@
 import {FileDownloader} from "./FileDownloader"
-import {FileWriter} from "../FileWriter"
-import {NetworkService} from "../NetworkService"
-import {TemporaryFile} from "../TemporaryFile"
+import {CommandRunner} from "../CommandRunner"
 
 export class LiveFileDownloader implements FileDownloader {
-  networkService: NetworkService
-  fileWriter: FileWriter
+  commandRunner: CommandRunner
   
-  constructor(networkService: NetworkService, fileWriter: FileWriter) {
-    this.networkService = networkService
-    this.fileWriter = fileWriter
+  constructor(commandRunner: CommandRunner) {
+    this.commandRunner = commandRunner
   }
   
-  async download(url: string): Promise<TemporaryFile> {
-    const response = await this.networkService.getBlob(url)
-    return this.fileWriter.write(response.data)
+  async download(url: string, filePath: string): Promise<void> {
+    const cmd = [
+      "curl", "--fail", "--silent", "--show-error", 
+      `\"${url}\"`, 
+      "-o", `\"${filePath}\"`
+    ]
+    await this.commandRunner.run(cmd.join(" "))
   }
 }
