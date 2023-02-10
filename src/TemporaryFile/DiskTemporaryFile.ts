@@ -5,8 +5,8 @@ export class DiskTemporaryFile implements TemporaryFile {
   public filePath: string
   fileObj: any
   
-  constructor() {
-    this.fileObj = tmp.fileSync()
+  constructor(fileExtension: string = "") {
+    this.fileObj = tmp.fileSync({postfix: fileExtension})
     this.filePath = this.fileObj.name
   }
   

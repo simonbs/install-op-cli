@@ -1,4 +1,3 @@
-import * as path from "path"
 import {Action} from "../src/Action"
 import {MockStateStore} from "./mock/MockStateStore"
 import {MockActionOptions} from "./mock/MockActionOptions"
@@ -6,6 +5,7 @@ import {MockPlatformProvider} from "./mock/MockPlatformProvider"
 import {MockDownloadSpecificationFactory} from "./mock/MockDownloadSpecificationFactory"
 import {MockVersionsService} from "./mock/MockVersionsService"
 import {MockArchLinkExtractor} from "./mock/MockArchLinkExtractor"
+import {MockTemporaryFileFactory} from "./mock/MockTemporaryFileFactory"
 import {MockFileDownloader} from "./mock/MockFileDownloader"
 import {MockPKGInstaller} from "./mock/MockPKGInstaller"
 
@@ -16,6 +16,7 @@ test("Runs on darwin platform", async () => {
     new MockDownloadSpecificationFactory("2.13.1", "macos", "universal"),
     new MockVersionsService(),
     new MockArchLinkExtractor(),
+    new MockTemporaryFileFactory(),
     new MockFileDownloader(),
     new MockPKGInstaller()
   )
@@ -30,6 +31,7 @@ test("Throws when running on unsupported platform", async () => {
     new MockDownloadSpecificationFactory("2.13.1", "macos", "universal"),
     new MockVersionsService(),
     new MockArchLinkExtractor(),
+    new MockTemporaryFileFactory(),
     new MockFileDownloader(),
     new MockPKGInstaller()
   )
@@ -45,6 +47,7 @@ test("Enters post-phase after running main-phase", async () => {
     new MockDownloadSpecificationFactory("2.13.1", "macos", "universal"),
     new MockVersionsService(),
     new MockArchLinkExtractor(),
+    new MockTemporaryFileFactory(),
     new MockFileDownloader(),
     new MockPKGInstaller()
   )
