@@ -65,7 +65,7 @@ export class Action {
       downloadSpecification.system, 
       downloadSpecification.architecture
     )
-    const pkgFile = this.temporaryFileFactory.makeTemporaryFile("pkg")
+    const pkgFile = this.temporaryFileFactory.makeTemporaryFile(".pkg")
     await this.fileDownloader.download(pkgURL, pkgFile.filePath)
     await this.pkgInstaller.install(pkgFile.filePath)
     pkgFile.cleanup()
