@@ -3,6 +3,7 @@ import {PlatformProvider} from "./PlatformProvider"
 import {DownloadSpecificationFactory} from "./DownloadSpecification"
 import {VersionsService} from "./VersionsService"
 import {ArchLinkExtractor} from "./ArchLinkExtractor"
+import {TemporaryFileFactory} from "./TemporaryFile"
 import {FileDownloader} from "./FileDownloader"
 import {PKGInstaller} from "./PKGInstaller"
 
@@ -18,6 +19,7 @@ export class Action {
   downloadSpecificationFactory: DownloadSpecificationFactory
   versionsService: VersionsService
   archLinkExtractor: ArchLinkExtractor
+  temporaryFileFactory: TemporaryFileFactory
   fileDownloader: FileDownloader
   pkgInstaller: PKGInstaller
   
@@ -27,6 +29,7 @@ export class Action {
     downloadSpecificationFactory: DownloadSpecificationFactory,
     versionsService: VersionsService,
     archLinkExtractor: ArchLinkExtractor,
+    temporaryFileFactory: TemporaryFileFactory,
     fileDownloader: FileDownloader,
     pkgInstaller: PKGInstaller
   ) {
@@ -35,6 +38,7 @@ export class Action {
     this.downloadSpecificationFactory = downloadSpecificationFactory
     this.versionsService = versionsService
     this.archLinkExtractor = archLinkExtractor
+    this.temporaryFileFactory = temporaryFileFactory
     this.fileDownloader = fileDownloader
     this.pkgInstaller = pkgInstaller
   }
@@ -54,15 +58,16 @@ export class Action {
       options.architecture
     )
     const versions = await this.versionsService.loadVersions()
-    const fileURL = this.archLinkExtractor.extract(
+    const pkgURL = this.archLinkExtractor.extract(
       versions, 
       downloadSpecification.versionNumber, 
       downloadSpecification.system, 
       downloadSpecification.architecture
     )
-    const file = await this.fileDownloader.download(fileURL)
-    await this.pkgInstaller.install(file.filePath)
-    file.cleanup()
+    const pkgFile = this.temporaryFileFactory.makeTemporaryFile("pkg")
+    await this.fileDownloader.download(pkgURL, pkgFile.filePath)
+    await this.pkgInstaller.install(pkgFile.filePath)
+    pkgFile.cleanup()
   }
   
   private checkIfPlatformIsSupported() {
