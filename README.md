@@ -1,10 +1,10 @@
 # install-op-cli
 
-![](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml/badge.svg)
+[![](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml/badge.svg)](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml)
 
-GitHub Action to install the 1Password CLI.
+GitHub Action to install a specified version of the 1Password CLI.
 
-### 🚀 Usage
+### 🚀 Getting Started
 
 Add the action to your workflow file.
 
@@ -24,7 +24,7 @@ name: Verify 1Password was Installed
 run: op --version
 ```
 
-Set the `skip-if-installed` input to `true` to skip installing the 1Password CLI if a version is already installed. Setting `skip-if-installed` to `true` will skip installing the CLI even if the installed version does not match the version specified in the action.
+Set the `skip-if-installed` input to true to skip installing the 1Password CLI if a version is already installed. Be aware that if `skip-if-installed` is true, the action will skip installing the CLI even if the installed version does not match the version specified in the action.
 
 ```yml
 name: Install 1Password CLI
@@ -36,7 +36,7 @@ with:
 
 ### ⚡️ How does this work?
 
-The action scrapes the list of available versions from [the release notes for the 1Password CLI](https://app-updates.agilebits.com/product_history/CLI2)), finds the version specified in the action, downloads it, and installs it onto the runner.
+The action scrapes the list of available versions from [the release notes for the 1Password CLI](https://app-updates.agilebits.com/product_history/CLI2), finds the version specified in the action, downloads it, and installs it onto the runner.
 
 ### 🤨 But why?
 
