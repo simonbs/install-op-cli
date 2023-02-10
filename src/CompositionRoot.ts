@@ -4,6 +4,8 @@ import {StateStore} from "./StateStore/StateStore"
 import {KeyValueStateStore} from "./StateStore/KeyValueStateStore"
 import {PlatformProvider} from "./PlatformProvider/PlatformProvider"
 import {LivePlatformProvider} from "./PlatformProvider/LivePlatformProvider"
+import {CommandExistenceChecker} from "./CommandExistenceChecker/CommandExistenceChecker"
+import {LiveCommandExistenceChecker} from "./CommandExistenceChecker/LiveCommandExistenceChecker"
 import {NetworkService} from "./NetworkService/NetworkService"
 import {LiveNetworkService} from "./NetworkService/LiveNetworkService"
 import {DownloadSpecificationFactory} from "./DownloadSpecification/DownloadSpecificationFactory"
@@ -30,6 +32,7 @@ export class CompositionRoot {
     return new Action(
       this.getStateStore(),
       this.getPlatformProvider(),
+      this.getCommandExistenceChecker(),
       this.getDownloadSpecificationFactory(),
       this.getVersionsService(),
       this.getArchLinkExtractor(),
@@ -45,6 +48,10 @@ export class CompositionRoot {
   
   private static getPlatformProvider(): PlatformProvider {
     return new LivePlatformProvider()
+  }
+  
+  private static getCommandExistenceChecker(): CommandExistenceChecker {
+    return new LiveCommandExistenceChecker(this.getCommandRunner())
   }
   
   private static getDownloadSpecificationFactory(): DownloadSpecificationFactory {
