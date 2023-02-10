@@ -4,7 +4,7 @@
 
 GitHub Action to install a specified version of the 1Password CLI.
 
-### 🚀 Usage
+### 🚀 Getting Started
 
 Add the action to your workflow file.
 
