@@ -1,4 +1,5 @@
-import {DownloadSpecification, DownloadSpecificationFactory} from "../../src/DownloadSpecification"
+import {DownloadSpecification} from "../../src/DownloadSpecification/DownloadSpecification"
+import {DownloadSpecificationFactory} from "../../src/DownloadSpecification/DownloadSpecificationFactory"
 
 export class MockDownloadSpecificationFactory implements DownloadSpecificationFactory {
   _downloadSpecification: DownloadSpecification

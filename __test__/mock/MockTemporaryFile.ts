@@ -1,4 +1,4 @@
-import {TemporaryFile} from "../../src/TemporaryFile"
+import {TemporaryFile} from "../../src/TemporaryFile/TemporaryFile"
 
 export class MockTemporaryFile implements TemporaryFile {
   public filePath: string

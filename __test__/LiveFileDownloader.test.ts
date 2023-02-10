@@ -1,5 +1,5 @@
 import {MockCommandRunner} from "./mock/MockCommandRunner"
-import {LiveFileDownloader} from "../src/FileDownloader"
+import {LiveFileDownloader} from "../src/FileDownloader/LiveFileDownloader"
 
 test("Creates command with the correct URL", async () => {
   const commandRunner = new MockCommandRunner()

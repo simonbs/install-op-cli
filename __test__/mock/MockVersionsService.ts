@@ -1,5 +1,5 @@
 import {Version} from "../../src/Version"
-import {VersionsService} from "../../src/VersionsService"
+import {VersionsService} from "../../src/VersionsService/VersionsService"
 
 export class MockVersionsService implements VersionsService {
   versions: Version[]

@@ -1,4 +1,4 @@
-import {ActionOptions, Action} from "../../src/Action"
+import {ActionOptions} from "../../src/Action"
 
 export class MockActionOptions implements ActionOptions {
   versionNumber: string

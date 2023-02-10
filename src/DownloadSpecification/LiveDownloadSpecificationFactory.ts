@@ -1,4 +1,4 @@
-import {PlatformProvider} from "../PlatformProvider"
+import {PlatformProvider} from "../PlatformProvider/PlatformProvider"
 import {DownloadSpecification} from "./DownloadSpecification"
 import {DownloadSpecificationFactory} from "./DownloadSpecificationFactory"
 

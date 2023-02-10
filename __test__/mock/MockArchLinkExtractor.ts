@@ -1,5 +1,5 @@
 import {Version} from "../../src/Version"
-import {ArchLinkExtractor} from "../../src/ArchLinkExtractor"
+import {ArchLinkExtractor} from "../../src/ArchLinkExtractor/ArchLinkExtractor"
 
 export class MockArchLinkExtractor implements ArchLinkExtractor {
   url: string

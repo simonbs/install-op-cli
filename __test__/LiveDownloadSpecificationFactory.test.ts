@@ -1,4 +1,4 @@
-import {LiveDownloadSpecificationFactory} from "../src/DownloadSpecification"
+import {LiveDownloadSpecificationFactory} from "../src/DownloadSpecification/LiveDownloadSpecificationFactory"
 import {MockPlatformProvider} from "./mock/MockPlatformProvider"
 
 test("Fallback to macOS system on Darwin platform", async () => {

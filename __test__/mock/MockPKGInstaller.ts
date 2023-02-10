@@ -1,4 +1,4 @@
-import {PKGInstaller} from "../../src/PKGInstaller"
+import {PKGInstaller} from "../../src/PKGInstaller/PKGInstaller"
 
 export class MockPKGInstaller implements PKGInstaller {
   install(filePath: string): Promise<void> {
