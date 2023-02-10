@@ -9,10 +9,11 @@ import {DownloadSpecificationFactory, LiveDownloadSpecificationFactory} from "./
 import {VersionsScraper, LiveVersionsScraper} from "./VersionsScraper"
 import {VersionsService, LiveVersionsService} from "./VersionsService"
 import {ArchLinkExtractor, LiveArchLinkExtractor} from "./ArchLinkExtractor"
-import {FileWriter, DiskFileWriter} from "./FileWriter"
 import {FileDownloader, LiveFileDownloader} from "./FileDownloader"
 import {CommandRunner, LiveCommandRunner} from "./CommandRunner"
 import {PKGInstaller, LivePKGInstaller} from "./PKGInstaller"
+import {TemporaryFileFactory} from "./TemporaryFile/TemporaryFileFactory"
+import {DiskTemporaryFileFactory} from "./TemporaryFile/DiskTemporaryFileFactory"
 
 export class CompositionRoot {
   static getAction(): Action {
@@ -22,6 +23,7 @@ export class CompositionRoot {
       this.getDownloadSpecificationFactory(),
       this.getVersionsService(),
       this.getArchLinkExtractor(),
+      this.getTemporaryFileFactory(),
       this.getFileDownloader(),
       this.getPKGInstaller()
     )
@@ -56,15 +58,11 @@ export class CompositionRoot {
   }
   
   private static getFileDownloader(): FileDownloader {
-    return new LiveFileDownloader(this.getNetworkService(), this.getFileWriter())
+    return new LiveFileDownloader(this.getCommandRunner())
   }
   
   private static getPKGInstaller(): PKGInstaller {
     return new LivePKGInstaller(this.getCommandRunner())
-  }
-  
-  private static getFileWriter(): FileWriter {
-    return new DiskFileWriter()
   }
   
   private static getCommandRunner(): CommandRunner {
@@ -73,5 +71,9 @@ export class CompositionRoot {
   
   private static getNetworkService(): NetworkService {
     return new LiveNetworkService(this.getCommandRunner())
+  }
+  
+  private static getTemporaryFileFactory(): TemporaryFileFactory {
+    return new DiskTemporaryFileFactory()
   }
 }

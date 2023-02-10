@@ -14,12 +14,4 @@ export class LiveNetworkService implements NetworkService {
     let data = await this.commandRunner.run(cmd)
     return {data: data}
   }
-  
-  async getBlob(url: string): Promise<Response> {
-    return await axios({
-      method: "get",
-      url: url,
-      responseType: "blob"
-    })
-  }
 }
