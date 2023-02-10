@@ -36,7 +36,7 @@ with:
 
 ### ⚡️ How does this work?
 
-The action scrapes the list of available versions from [the release notes for the 1Password CLI](https://app-updates.agilebits.com/product_history/CLI2)), finds the version specified in the action, downloads it, and installs it onto the runner.
+The action scrapes the list of available versions from [the release notes for the 1Password CLI](https://app-updates.agilebits.com/product_history/CLI2), finds the version specified in the action, downloads it, and installs it onto the runner.
 
 ### 🤨 But why?
 
