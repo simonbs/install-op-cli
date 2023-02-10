@@ -57,3 +57,19 @@ test("Enters post-phase after running main-phase", async () => {
   expect(stateStore.isPost).toBeTruthy()
 })
 
+test("Downloaded package has .pkg file extension", async () => {
+  const temporaryFileFactory = new MockTemporaryFileFactory()
+  const action = new Action(
+    new MockStateStore(),
+    new MockPlatformProvider("darwin"),
+    new MockDownloadSpecificationFactory("2.13.1", "macos", "universal"),
+    new MockVersionsService(),
+    new MockArchLinkExtractor(),
+    temporaryFileFactory,
+    new MockFileDownloader(),
+    new MockPKGInstaller()
+  )
+  const options = new MockActionOptions("2.13.1", "macos", "universal")
+  await action.run(options)
+  expect(temporaryFileFactory.fileExtension).toBe(".pkg")
+})
