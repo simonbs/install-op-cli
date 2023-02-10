@@ -4,12 +4,12 @@ import {StateStore} from "./StateStore/StateStore"
 import {KeyValueStateStore} from "./StateStore/KeyValueStateStore"
 import {PlatformProvider} from "./PlatformProvider/PlatformProvider"
 import {LivePlatformProvider} from "./PlatformProvider/LivePlatformProvider"
-import {HTMLReader} from "./HTMLReader/HTMLReader"
-import {LiveHTMLReader} from "./HTMLReader/LiveHTMLReader"
 import {NetworkService} from "./NetworkService/NetworkService"
 import {LiveNetworkService} from "./NetworkService/LiveNetworkService"
 import {DownloadSpecificationFactory} from "./DownloadSpecification/DownloadSpecificationFactory"
 import {LiveDownloadSpecificationFactory} from "./DownloadSpecification/LiveDownloadSpecificationFactory"
+import {VersionsHTMLReader} from "./VersionsHTMLReader/VersionsHTMLReader"
+import {LiveVersionsHTMLReader} from "./VersionsHTMLReader/LiveVersionsHTMLReader"
 import {VersionsScraper} from "./VersionsScraper/VersionsScraper"
 import {LiveVersionsScraper} from "./VersionsScraper/LiveVersionsScraper"
 import {VersionsService} from "./VersionsService/VersionsService"
@@ -52,15 +52,15 @@ export class CompositionRoot {
   }
   
   private static getVersionsService(): VersionsService {
-    return new LiveVersionsService(this.getHTMLReader(), this.getVersionsScraper())
+    return new LiveVersionsService(this.getVersionsHTMLReader(), this.getVersionsScraper())
   }
   
   private static getVersionsScraper(): VersionsScraper {
     return new LiveVersionsScraper()
   }
   
-  private static getHTMLReader(): HTMLReader {
-    return new LiveHTMLReader(this.getNetworkService())
+  private static getVersionsHTMLReader(): VersionsHTMLReader {
+    return new LiveVersionsHTMLReader(this.getNetworkService())
   }
   
   private static getArchLinkExtractor(): ArchLinkExtractor {

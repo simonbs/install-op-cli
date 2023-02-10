@@ -1,7 +1,7 @@
-import {HTMLReader} from "./HTMLReader"
+import {VersionsHTMLReader} from "./VersionsHTMLReader"
 import {NetworkService} from "../NetworkService/NetworkService"
 
-export class LiveHTMLReader implements HTMLReader {
+export class LiveVersionsHTMLReader implements VersionsHTMLReader {
   networkService: NetworkService
   
   constructor(networkService: NetworkService) {
