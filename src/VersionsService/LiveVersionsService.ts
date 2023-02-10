@@ -1,19 +1,19 @@
 import {VersionsService} from "./VersionsService"
-import {HTMLReader} from "../HTMLReader/HTMLReader"
+import {VersionsHTMLReader} from "../VersionsHTMLReader/VersionsHTMLReader"
 import {VersionsScraper} from "../VersionsScraper/VersionsScraper"
 import {Version} from "../Version"
 
 export class LiveVersionsService implements VersionsService {
-  htmlReader: HTMLReader
+  versionsHTMLReader: VersionsHTMLReader
   versionsScraper: VersionsScraper
   
-  constructor(htmlReader: HTMLReader, versionsScraper: VersionsScraper) {
-    this.htmlReader = htmlReader
+  constructor(versionsHTMLReader: VersionsHTMLReader, versionsScraper: VersionsScraper) {
+    this.versionsHTMLReader = versionsHTMLReader
     this.versionsScraper = versionsScraper
   }
   
   async loadVersions(): Promise<Version[]> {
-    let html = await this.htmlReader.read()
+    let html = await this.versionsHTMLReader.read()
     return this.versionsScraper.scrape(html)
   }
 }
