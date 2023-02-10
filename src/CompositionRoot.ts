@@ -72,6 +72,6 @@ export class CompositionRoot {
   }
   
   private static getNetworkService(): NetworkService {
-    return new LiveNetworkService()
+    return new LiveNetworkService(this.getCommandRunner())
   }
 }
