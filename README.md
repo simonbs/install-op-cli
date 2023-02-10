@@ -1,6 +1,6 @@
 # install-op-cli
 
-![](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml/badge.svg)
+[![](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml/badge.svg)](https://github.com/simonbs/install-op-cli/actions/workflows/test.yml)
 
 GitHub Action to install the 1Password CLI.
 
