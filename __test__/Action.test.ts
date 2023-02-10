@@ -9,7 +9,7 @@ import {MockArchLinkExtractor} from "./mock/MockArchLinkExtractor"
 import {MockFileDownloader} from "./mock/MockFileDownloader"
 import {MockPKGInstaller} from "./mock/MockPKGInstaller"
 
-test("Runs on darwin paltform", async () => {
+test("Runs on darwin platform", async () => {
   const action = new Action(
     new MockStateStore(),
     new MockPlatformProvider("darwin"),
