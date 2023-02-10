@@ -1,5 +1,6 @@
 import {StateStore} from "./StateStore/StateStore"
 import {PlatformProvider} from "./PlatformProvider/PlatformProvider"
+import {CommandExistenceChecker} from "./CommandExistenceChecker/CommandExistenceChecker"
 import {DownloadSpecificationFactory} from "./DownloadSpecification/DownloadSpecificationFactory"
 import {VersionsService} from "./VersionsService/VersionsService"
 import {ArchLinkExtractor} from "./ArchLinkExtractor/ArchLinkExtractor"
@@ -8,6 +9,7 @@ import {FileDownloader} from "./FileDownloader/FileDownloader"
 import {PKGInstaller} from "./PKGInstaller/PKGInstaller"
 
 export interface ActionOptions {
+  skipIfInstalled: boolean
   versionNumber: string
   system: string | null
   architecture: string | null
@@ -16,6 +18,7 @@ export interface ActionOptions {
 export class Action {
   stateStore: StateStore
   platformProvider: PlatformProvider
+  commandExistenceChecker: CommandExistenceChecker
   downloadSpecificationFactory: DownloadSpecificationFactory
   versionsService: VersionsService
   archLinkExtractor: ArchLinkExtractor
@@ -26,6 +29,7 @@ export class Action {
   constructor(
     stateStore: StateStore,
     platformProvider: PlatformProvider,
+    commandExistenceChecker: CommandExistenceChecker,
     downloadSpecificationFactory: DownloadSpecificationFactory,
     versionsService: VersionsService,
     archLinkExtractor: ArchLinkExtractor,
@@ -35,6 +39,7 @@ export class Action {
   ) {
     this.stateStore = stateStore
     this.platformProvider = platformProvider
+    this.commandExistenceChecker = commandExistenceChecker
     this.downloadSpecificationFactory = downloadSpecificationFactory
     this.versionsService = versionsService
     this.archLinkExtractor = archLinkExtractor
@@ -47,7 +52,9 @@ export class Action {
     this.checkIfPlatformIsSupported()
     this.validateOptions(options)
     if (!this.stateStore.isPost) {
-      await this.runMain(options)
+      if (await this.shouldInstall(options.skipIfInstalled)) {
+        await this.runMain(options)
+      }
       this.stateStore.isPost = true
     }
   }
@@ -69,6 +76,15 @@ export class Action {
     await this.fileDownloader.download(pkgURL, pkgFile.filePath)
     await this.pkgInstaller.install(pkgFile.filePath)
     pkgFile.cleanup()
+  }
+  
+  private async shouldInstall(skipIfInstalled: boolean): Promise<boolean> {
+    if (skipIfInstalled) {
+      const isInstalled = await this.commandExistenceChecker.commandExists("op")
+      return !isInstalled
+    } else {
+      return true
+    }
   }
   
   private validateOptions(options: ActionOptions) {

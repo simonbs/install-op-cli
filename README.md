@@ -24,6 +24,16 @@ name: Verify 1Password was Installed
 run: op --version
 ```
 
+Set the `skip-if-installed` input to `true` to skip installing the 1Password CLI if a version is already installed. Setting `skip-if-installed` to `true` will skip installing the CLI even if the installed version does not match the version specified in the action.
+
+```yml
+name: Install 1Password CLI
+uses: simonbs/install-op-cli@1.0.0
+with:
+  version-number: 2.13.1
+  skip-if-installed: true
+```
+
 ### ⚡️ How does this work?
 
 The action scrapes the list of available versions from [the release notes for the 1Password CLI](https://app-updates.agilebits.com/product_history/CLI2)), finds the version specified in the action, downloads it, and installs it onto the runner.

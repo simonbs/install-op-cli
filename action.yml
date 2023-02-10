@@ -1,6 +1,10 @@
 name: Install 1Password CLI
 description: Downloads and installs the 1Password CLI. See https://app-updates.agilebits.com/product_history/CLI2 for available versions.
 inputs:
+  skip-if-installed:
+    description: Skip installing the CLI if it is already installed. Not that this is independent of which version is already installed. If another version than the specified version is installed and this parameter is set to true, the CLI will not be installed.
+    required: true
+    default: false
   version-number:
     description: The version of the CLI to install.
     required: true
