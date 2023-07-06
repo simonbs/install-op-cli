@@ -4,6 +4,10 @@
 
 GitHub Action to install a specified version of the 1Password CLI.
 
+### 🫥 Deprecated
+
+After publishing this action, 1Password has published their own action for installing their CLI. Therefore this action is deprecated and it is recommended to use [1Password's official action](https://github.com/1Password/install-cli-action) instead.
+
 ### 🚀 Getting Started
 
 Add the action to your workflow file.
